@@ -1,0 +1,17 @@
+{
+  "name": "mycode",
+  "version": "1.0.0",
+  "description": "",
+  "engines": {
+		"node": ">=8.4.0",
+		"npm": ">=5.3.0"
+	},
+  "scripts": {
+    "start": "node mycode.js"
+  },
+  "dependencies": {
+    "fabric-shim": "~1.4.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
