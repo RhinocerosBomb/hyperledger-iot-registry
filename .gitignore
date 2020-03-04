@@ -1,1 +1,3 @@
 node_modules/
+/test-network/channel-artifacts
+/test-network/crypto-config
