@@ -15,14 +15,22 @@ function App() {
   
 
   const [id, setId] = useState('');
-  const [controller, setController] = useState('');
-  const [data, setData] = useState('');
+  const [controllerId, setControllerId] = useState('');
+  const [data, setData] = useState({});
+
+  const [active, setActive] = useState(true);
+
+  const [condition, setCondition] = useState();
+  const [time, setTime] = useState('');
 
   const printValues = e => {
     e.preventDefault();
-    console.log(id,controller,data);
+    console.log(id,controllerId,data,active,condition);
+
+
   };
 
+  
   return (
 
     // <div className="App">
@@ -39,26 +47,43 @@ function App() {
           type="text"
         />
       </label>
-      <br />
+    
       <label>
-      controller:
+      controllerId:
         <input
-          value={controller}
-          onChange={event => setController(event.target.value)}
-          name="controller"
+          value={controllerId}
+          onChange={event => setControllerId(event.target.value)}
+          name="controllerId"
           type="text"
         />
       </label>
+  
       <label>
       data:
         <input
           value={data}
-          onChange={event => setData(event.target.value)}
+          onChange={event => setCondition(event.target.value)}
           name="data"
           type="text"
         />
       </label>
-      <br />
+
+      <div className={active ? 'active' : 'deActive'}>
+      state: {active ? 'active' : 'deactive'}
+      </div>
+
+      <label>
+        condition:
+        <select value={condition} 
+        onChange={event => setData(event.target.value)}  
+      >
+          <option value="grapefruit">Operating</option>
+          <option value="lime">Dead</option>
+        </select>
+      </label>
+
+      
+    
       <button>Submit</button>
     </form>
 
