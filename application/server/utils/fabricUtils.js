@@ -9,7 +9,7 @@ const getNetwork = async (identity, connection, channel) => {
     `${connection}.json`,
   )
 
-  const walletPath = path.join(process.cwd(), '..', identity)
+  const walletPath = path.join(process.cwd(), 'wallet')
   const wallet = new FileSystemWallet(walletPath)
   console.log(`Wallet path: ${walletPath}`)
 
@@ -27,7 +27,7 @@ const getNetwork = async (identity, connection, channel) => {
   // use the identity of user1 from wallet to connect
   await gateway.connect(ccpPath, {
     wallet,
-    identity: 'wallet',
+    identity,
     discovery: { enabled: true, asLocalhost: true },
   })
 
@@ -37,4 +37,5 @@ const getNetwork = async (identity, connection, channel) => {
   return network
 }
 
-modules.export = { getNetwork }
+console.log(getNetwork)
+module.exports = { getNetwork }
