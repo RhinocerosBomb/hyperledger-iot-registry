@@ -22,7 +22,6 @@ function App() {
 
   const [id, setId] = useState("");
   const [controllerId, setControllerId] = useState("");
-  const [data, setData] = useState({});
 
   const [active, setActive] = useState("true");
 
@@ -64,17 +63,40 @@ function App() {
 
   return (
     <div>
-      <h1>iot list</h1>
+      <h1
+        align="middle"
+        style={{
+          fontSize: 50,
+          padding: 10,
+          backgroundColor: "rgba(194, 226, 255, 1)",
+          marginTop: 10,
+          marginBottom: 1
+        }}
+      >
+        Hyperledger IoT Registry{" "}
+      </h1>
 
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Id</TableCell>
-              <TableCell align="right">controllerId</TableCell>
-              <TableCell align="right">state</TableCell>
-              <TableCell align="right">condition</TableCell>
-              <TableCell align="right">button</TableCell>
+          <TableHead
+            style={{
+              fontSize: "1rem",
+              padding: "10rem",
+              backgroundColor: "rgba(0,0,0,0.2)"
+            }}
+          >
+            <TableRow
+              style={{
+                fontSize: "5rem",
+                padding: "5rem",
+                backgroundColor: "rgba(242, 242, 242)"
+              }}
+            >
+              <TableCell>ID</TableCell>
+              <TableCell align="right">Controller ID</TableCell>
+              <TableCell align="right">State</TableCell>
+              <TableCell align="right">Condition</TableCell>
+              <TableCell align="right">Confirm</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -91,7 +113,7 @@ function App() {
                 <input
                   value={controllerId}
                   onChange={event => setControllerId(event.target.value)}
-                  name="controllerId"
+                  name="Controller Id"
                   type="text"
                 />
               </TableCell>
@@ -122,14 +144,14 @@ function App() {
             {iotList.map(device => (
               <TableRow key={device.id}>
                 <TableCell component="th" scope="row">
-                  id : {device.id}
+                  ID : {device.id}
                 </TableCell>
                 <TableCell align="right">
-                  controller: {device.controllerId}
+                  Controller: {device.controllerId}
                 </TableCell>
-                <TableCell align="right">state: {device.active}</TableCell>
+                <TableCell align="right">State: {device.active}</TableCell>
                 <TableCell align="right">
-                  condition: {device.condition}
+                  Condition: {device.condition}
                 </TableCell>
                 <TableCell align="right">
                   {" "}
@@ -146,12 +168,13 @@ function App() {
           </TableBody>
         </Table>
       </TableContainer>
-      <Popup show={showPopup}>
-        <div>ChangeController</div>
+      <Popup show={showPopup}> 
 
         <label>
-          change controller for id {editId}:
+          Change Controller ID for: {editId}:
+
           <input
+           
             value={editControllerId}
             onChange={event => setEditControllerId(event.target.value)}
             name="editId"
@@ -159,7 +182,7 @@ function App() {
           />
         </label>
 
-        <br></br>
+        <br />
         <button onClick={changeController}>Change</button>
         <button onClick={() => setShowPopup(false)}>Close</button>
       </Popup>
