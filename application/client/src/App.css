@@ -1,5 +1,55 @@
+html,
+body {
+  /* background: gray; */
+  height: 100%;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+#root {
+  height: inherit;
+}
+
+h1 {
+  color: white;
+  font-family: arial;
+  font-weight: normal;
+}
+select {
+  background: white;
+}
+.MuiBox-root-4 {
+  color: rgb(255, 255, 255);
+  background-color: black;
+  padding: 16px;
+}
+
+.MuiTableCell-body {
+  color: rgb(46, 45, 45);
+  padding: 15px;
+  font-weight: 100;
+}
+
+label {
+  cursor: default;
+  color: rgb(255, 255, 255);
+  ont-weight: 100;
+  line-height: 1.5rem;
+  font-size: 14px;
+}
+.MuiTableCell-head {
+  color: rgba(255, 255, 255, 0.87);
+  font-weight: 100;
+  line-height: 1.5rem;
+  font-size: 14px;
+}
+
 .App {
   text-align: center;
+  font-family: Arial;
 }
 
 .App-logo {
@@ -7,14 +57,8 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
+  background-color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
