@@ -9,8 +9,6 @@ var deviceRouter = require('./routes/device');
 
 var app = express();
 
-require('./fabricConnection/index');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

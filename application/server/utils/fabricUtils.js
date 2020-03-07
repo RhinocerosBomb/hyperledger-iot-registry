@@ -33,7 +33,9 @@ const getNetwork = async (identity, connection, channel) => {
 
   // Get the network (channel) our contract is deployed to.
   const network = await gateway.getNetwork(channel)
+  // const contract = await network.getContract('connection-org1');
 
+  // return {network, contract}
   return network
 }
 
