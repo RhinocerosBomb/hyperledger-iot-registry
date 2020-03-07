@@ -1,7 +1,7 @@
 'use strict';
 
 const { Contract } = require('fabric-contract-api');
-const shim = require('fabric-shim');
+//const shim = require('fabric-shim');
 const util = require('util');
 
 class FabCar extends Contract {
@@ -125,6 +125,16 @@ class FabCar extends Contract {
 
         await ctx.stub.putState(attributes[1], Buffer.from(JSON.stringify(originalController)));
         await ctx.stub.putState(newControllerID, Buffer.from(JSON.stringify(newController)));
+
+        let indexName = 'deviceID~controllerID';
+        let deviceControllerIndexKey = await ctx.stub.createCompositeKey(indexName, [attributes[0], attributes[1]]);
+        if(!deviceControllerIndexKey) {
+            throw new Error('Failed to create Composite Key');
+        }
+        await ctx.stub.deleteState(deviceControllerIndexKey);
+        let newDeviceControllerIndexKey = await ctx.stub.createCompositeKey(indexName, [deviceID, newControllerID]);
+        await ctx.stub.putState(newDeviceControllerIndexKey, Buffer.from('\u0000'));
+
         console.info('============= END : changeDeviceController ===========');
     }
 
