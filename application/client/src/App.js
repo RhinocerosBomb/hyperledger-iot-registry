@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import Particles from "./Particles";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -10,6 +11,9 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Popup from "./Popup";
+
+import Box from "@material-ui/core/Box";
+import zIndex from "@material-ui/core/styles/zIndex";
 
 const useStyles = makeStyles({
   table: {
@@ -60,21 +64,28 @@ function App() {
       })
     );
   };
-
+  const styles = {
+    root: {
+      fontFamily: "sans-serif",
+      textAlign: "center",
+      height: "100%",
+      background: "#111",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      position: "absolute",
+      zIndex: "-1"
+    }
+  };
   return (
     <div>
-      <h1
-        align="middle"
-        style={{
-          fontSize: 50,
-          padding: 10,
-          backgroundColor: "rgba(194, 226, 255, 1)",
-          marginTop: 10,
-          marginBottom: 1
-        }}
-      >
-        Hyperledger IoT Registry{" "}
-      </h1>
+      <div style={styles.root}>
+        <Particles />
+      </div>
+
+      <Box bgcolor="primary.main" color="primary.contrastText" p={2}>
+        <h1 align="middle">Hyperledger IoT Registry </h1>
+      </Box>
 
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
@@ -89,7 +100,7 @@ function App() {
               style={{
                 fontSize: "5rem",
                 padding: "5rem",
-                backgroundColor: "rgba(242, 242, 242)"
+                backgroundColor: "rgba(64, 64, 64, 1)"
               }}
             >
               <TableCell>ID</TableCell>
@@ -122,8 +133,8 @@ function App() {
                   value={active}
                   onChange={event => setActive(event.target.value)}
                 >
-                  <option value={true}>active</option>
-                  <option value={false}>inactive</option>
+                  <option value={true}>Active</option>
+                  <option value={false}>Inactive</option>
                 </select>
               </TableCell>
               <TableCell align="right">
@@ -168,13 +179,10 @@ function App() {
           </TableBody>
         </Table>
       </TableContainer>
-      <Popup show={showPopup}> 
-
+      <Popup show={showPopup}>
         <label>
           Change Controller ID for: {editId}:
-
           <input
-           
             value={editControllerId}
             onChange={event => setEditControllerId(event.target.value)}
             name="editId"
