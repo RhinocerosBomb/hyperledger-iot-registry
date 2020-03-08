@@ -1,5 +1,6 @@
 import React, { useState  } from "react";
 import "./App.css";
+import Particles from "./Particles";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -10,6 +11,9 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Popup from "./Popup";
+
+import Box from "@material-ui/core/Box";
+import zIndex from "@material-ui/core/styles/zIndex";
 
 const useStyles = makeStyles({
   table: {
@@ -22,7 +26,6 @@ function App() {
 
   const [id, setId] = useState("");
   const [controllerId, setControllerId] = useState("");
-  const [data, setData] = useState({});
 
   const [active, setActive] = useState("true");
 
@@ -61,48 +64,49 @@ function App() {
       })
     );
   };
-
-
-
-
-
-
-
-
-
-
-// // Replace ./data.json with your JSON feed
-// fetch("https://jsonplaceholder.typicode.com/todos/1")
-//   .then(response => {
-//     return response.json()
-//   })
-//   .then(data => {
-//     // Work with JSON data here
-//     console.log(data,'test')
-//   })
-//   .catch(err => {
-//     // Do something for an error here
-//   })
-
-
-
-
-
+  const styles = {
+    root: {
+      fontFamily: "sans-serif",
+      textAlign: "center",
+      height: "100%",
+      background: "#111",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      position: "absolute",
+      zIndex: "-1"
+    }
+  };
   return (
     <div>
+      <div style={styles.root}>
+        <Particles />
+      </div>
 
-
-      <h1>iot list</h1>
-
+      <Box bgcolor="primary.main" color="primary.contrastText" p={2}>
+        <h1 align="middle">Hyperledger IoT Registry </h1>
+      </Box>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Id</TableCell>
-              <TableCell align="right">controllerId</TableCell>
-              <TableCell align="right">state</TableCell>
-              <TableCell align="right">condition</TableCell>
-              <TableCell align="right">button</TableCell>
+          <TableHead
+            style={{
+              fontSize: "1rem",
+              padding: "10rem",
+              backgroundColor: "rgba(0,0,0,0.2)"
+            }}
+          >
+            <TableRow
+              style={{
+                fontSize: "5rem",
+                padding: "5rem",
+                backgroundColor: "rgba(64, 64, 64, 1)"
+              }}
+            >
+              <TableCell>ID</TableCell>
+              <TableCell align="right">Controller ID</TableCell>
+              <TableCell align="right">State</TableCell>
+              <TableCell align="right">Condition</TableCell>
+              <TableCell align="right">Confirm</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -119,7 +123,7 @@ function App() {
                 <input
                   value={controllerId}
                   onChange={event => setControllerId(event.target.value)}
-                  name="controllerId"
+                  name="Controller Id"
                   type="text"
                 />
               </TableCell>
@@ -128,8 +132,8 @@ function App() {
                   value={active}
                   onChange={event => setActive(event.target.value)}
                 >
-                  <option value={true}>active</option>
-                  <option value={false}>inactive</option>
+                  <option value={true}>Active</option>
+                  <option value={false}>Inactive</option>
                 </select>
               </TableCell>
               <TableCell align="right">
@@ -150,14 +154,14 @@ function App() {
             {iotList.map(device => (
               <TableRow key={device.id}>
                 <TableCell component="th" scope="row">
-                  id : {device.id}
+                  ID : {device.id}
                 </TableCell>
                 <TableCell align="right">
-                  controller: {device.controllerId}
+                  Controller: {device.controllerId}
                 </TableCell>
-                <TableCell align="right">state: {device.active}</TableCell>
+                <TableCell align="right">State: {device.active}</TableCell>
                 <TableCell align="right">
-                  condition: {device.condition}
+                  Condition: {device.condition}
                 </TableCell>
                 <TableCell align="right">
                   {" "}
@@ -175,10 +179,8 @@ function App() {
         </Table>
       </TableContainer>
       <Popup show={showPopup}>
-        <div>ChangeController</div>
-
         <label>
-          change controller for id {editId}:
+          Change Controller ID for: {editId}:
           <input
             value={editControllerId}
             onChange={event => setEditControllerId(event.target.value)}
@@ -187,7 +189,7 @@ function App() {
           />
         </label>
 
-        <br></br>
+        <br />
         <button onClick={changeController}>Change</button>
         <button onClick={() => setShowPopup(false)}>Close</button>
       </Popup>

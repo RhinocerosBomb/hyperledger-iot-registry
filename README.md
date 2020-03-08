@@ -1,5 +1,7 @@
 # hyperledger-iot-registry
 
+![](/pic.png)
+
 ## Purpose
 
 The purpose of this application is to come up with a potential use case of hyperledger fabric and exercise our skills as developers to create a MVP of such a use case.
