@@ -1,16 +1,16 @@
-var express = require('express')
-var fabricUtils = require('../utils/fabricUtils')
-var router = express.Router()
+var express = require('express');
+var fabricUtils = require('../utils/fabricUtils');
+var router = express.Router();
 
 /* GET device listing. */
 router.get('/', async function(req, res, next) {
+  console.log(fabricUtils);
   try {
-    const network = fabricUtils.getNetwork('admin', 'connection-org1', 'myChannel');
-
+    const network = await fabricUtils.getNetwork('admin', 'connection-org1', 'mychannel');
     // Get the contract from the network.
-    const contract = network.getContract('iotRegistry')
+    const contract = network.getContract('manageDevices');
 
-    const result = await contract.evaluateTransaction('queryAllDevices')
+    const result = await contract.evaluateTransaction('queryAllDevices');
     console.log(
       `Transaction has been evaluated, result is: ${result.toString()}`,
     )

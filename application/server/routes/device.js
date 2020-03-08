@@ -1,9 +1,10 @@
 var express = require('express');
+var fabricUtils = require('../utils/fabricUtils');
 var router = express.Router();
 
 router.put('/', async function(req, res, next) {
     try {
-        const network = fabricUtils.getNetwork('device', 'connection-org1', 'myChannel');
+        const network = await fabricUtils.getNetwork('device', 'connection-org1', 'myChannel');
     
         // Get the contract from the network.
         const contract = network.getContract('iotRegistry')
