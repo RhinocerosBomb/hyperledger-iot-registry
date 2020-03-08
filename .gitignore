@@ -1,3 +1,7 @@
 node_modules/
 /test-network/channel-artifacts
 /test-network/crypto-config
+/first-network/connection-org1.json
+/first-network/connection-org2.json
+/first-network/connection-org1.yaml
+/first-network/connection-org2.yaml

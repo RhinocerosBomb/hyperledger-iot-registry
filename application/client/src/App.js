@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState  } from "react";
 import "./App.css";
 import Particles from "./Particles";
 
@@ -86,7 +86,6 @@ function App() {
       <Box bgcolor="primary.main" color="primary.contrastText" p={2}>
         <h1 align="middle">Hyperledger IoT Registry </h1>
       </Box>
-
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead
