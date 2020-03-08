@@ -1,6 +1,6 @@
 # hyperledger-iot-registry
 
-![](/pic.img)
+![](/pic.png)
 
 ## Purpose
 
